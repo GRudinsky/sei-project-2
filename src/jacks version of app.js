@@ -89,7 +89,7 @@ class App extends React.Component {
 
   retrieveSources() {
     return this.state.news.articles.filter(article => {
-      return article.source.name === this.state.this.state.selectedSource === 'AselectedSource || ll' 
+      return article.source.name === this.state.selectedSource === selectedSource || 'All' 
     })
   }
 
