@@ -17,7 +17,6 @@ class App extends React.Component {
       filteredSources: [],
       filteredArticles: [],
       selectedSource: 'All'
-
     }
     this.handleSourceChange = this.handleSourceChange.bind(this)
     this.handleKeyUp = this.handleKeyUp.bind(this)
@@ -47,24 +46,21 @@ class App extends React.Component {
     const selectedSource = e.target.value
     const filteredArticles = selectedSource !== 'All' ? this.state.news.articles.filter(article => (
       article.source.name === selectedSource)) : this.state.news.articles
-    console.log('sources', filteredArticles)
+    // console.log('sources', filteredArticles)
     return filteredArticles
   }
 
   handleKeyUp(e) {
     const searchString = e.target.value
     this.setState({ searchString })
-    console.log(searchString)
+    // console.log(searchString)
 
   }
-
- 
 
   performSearch() {
     axios.get(`https://newsapi.org/v2/everything?q=${this.state.searchString}&results=100&apikey=${process.env.WEBAPI_ACCESS_TOKEN}`)
       // .then(res => console.log(res.data))
       .then(res => {
-        console.log('got data')
         this.setState({ news: res.data, filteredArticles: res.data.articles }, this.retrieveSources)
       })
       .catch(err => console.log(err))
@@ -77,12 +73,10 @@ class App extends React.Component {
         this.setState({ news: res.data, filteredArticles: res.data.articles }, this.retrieveSources )
       })
       .catch(err => console.log(err.message))
-
   }
 
   retrieveSources() {
-    const sources = this.state.news.articles.map(article => article.source.name)
-    const filteredSources = sources.filter((source, index) => sources.indexOf(source) === index).sort() || this.selectedSource === 'All'
+    const filteredSources = [...new Set(this.state.news.articles.map(article => (article.source.name)))] || this.selectedSource === 'All'
     this.setState({ filteredSources })
   }
 
@@ -91,7 +85,7 @@ class App extends React.Component {
     this.setState({ filteredArticles: (selectedSource !== 'All' ? this.state.news.articles.filter(article => article.source.name === selectedSource) : this.state.news.articles) })
   }
   render() {
-    console.log('rendering', this.state)
+    // console.log('rendering', this.state)
     return (
       <>
         <header className="navbar">
@@ -120,14 +114,11 @@ class App extends React.Component {
               )}
             </select>
           </div>
-
           <div className="searchBar">
             <input onKeyUp={this.handleKeyUp} name="searchInput" placeholder="Search..."></input>
             <button className="searchSubmit" onClick={this.performSearch}>Search</button>
           </div>
-
         </header>
-        <div className="section">
           <div className="container">
             <div className="columns">
               <div className="articles">
@@ -154,8 +145,6 @@ class App extends React.Component {
               </div>
             </div>
           </div>
-        </div >
-
       </>
     )
   }

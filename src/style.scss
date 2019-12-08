@@ -38,6 +38,10 @@ div.buttons {
     height: $base-button-height;
     width: 10vw;
   }
+  button, select:hover {
+  cursor: pointer;
+  }
+
   .searchBar {
     display: flex;
     margin-top: 2vh;
@@ -68,7 +72,7 @@ div.buttons {
     color: white;
   }
 
-  @media only screen and (max-width: 845px) {
+  @media only screen and (max-width: 942px) {
   .card {
     width: 97%;
   }
