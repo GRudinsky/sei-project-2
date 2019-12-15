@@ -1,5 +1,5 @@
 ![ga_logo](https://user-images.githubusercontent.com/38439393/70393846-99b26800-19e6-11ea-82a0-35c1b5738321.png)
-# Project 2: News On The Mews
+# SEI Project 2: News On The Mews
 
 ## Overview 
 
@@ -51,11 +51,46 @@ Page loads with general UK News. From there user has below choices:
 * Once clicked on one of the generated contents card, user gets navigated to the original source page to read the full article.
 
 ---
+## Approach Taken
+
+For both myself and [mElbo-dk](https://github.com/mElbo-dk) it was first pair programming experience. We were switching roles in being the navigator and the driver - by utilising this method, we were able to collaborate and learn from each other.
+
+The initial challenge we had was to pick the theme for the app that would later lead to the choice of an API for it. Once we chose the news topic and signed up for News API token, we dived into documentation to research the possible search end-points. This led to us being able to draw the possible search criterias and features. We decided to to make an GET request to get the "general" category news on page content load and display the buttons for other possible categories that API documentation allows. Another features that we deciced to iplement were the "search-bar" and language selector, which leads to display news results in different languages. For all above described steps we decided to implement the additional news sources filter bar that allows the user to filter them by the sources relative to the user choice. 
+
+Below is the algorithm that performs the news GEt and filter source features.
+
+```
+getData(selectedCountry, selectedCategory) {
+    // console.log('filter state', this.state.filteredSources)
+    axios.get(`https://newsapi.org/v2/top-headlines?country=${selectedCountry}&category=${selectedCategory}&apikey=${process.env.WEBAPI_ACCESS_TOKEN}`)
+      .then(res => {
+        this.setState({ news: res.data, filteredArticles: res.data.articles }, this.retrieveSources )
+      })
+      .catch(err => console.log(err.message))
+  }
+
+  retrieveSources() {
+    const filteredSources = [...new Set(this.state.news.articles.map(article => (article.source.name)))] || this.selectedSource === 'All'
+    this.setState({ filteredSources })
+  }
+
+  filterArticles(e) {
+    const selectedSource = e.target.value
+    this.setState({ filteredArticles: (selectedSource !== 'All' ? this.state.news.articles.filter(article => article.source.name === selectedSource) : this.state.news.articles) })
+  }
+```
+
+---
+## Wins
+
+This the first pair-programming and first React project for me and my colleague. It gave us an invaluable experience and something to build onto future coding projects.
+
+---
 ## Future Improvements
 
-* Make the page more-mobile responsive.
+* Make the page more mobile-responsive.
 * Store users last country and news type selection in localStorage so that more user-relevant content could be generated on the page load.
-* Translate page navigational content to relevant language after user changes to sources from different country in the Coutry selector.
+* Translate page navigational content to relevant language after user changes to sources from different country in the Country selector.
 
 
 
