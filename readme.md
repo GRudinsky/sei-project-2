@@ -1,6 +1,10 @@
 ![ga_logo](https://user-images.githubusercontent.com/38439393/70393846-99b26800-19e6-11ea-82a0-35c1b5738321.png)
 # SEI Project 2: News On The Mews
 
+
+Update: Click [here](https://github.com/GRudinsky/sei-project-2) for refactored version of the same app with separate UI components and React Hooks.
+---
+
 ## Overview 
 
 News On The Mews is an online web application that displays news headlines on different topics and in different languages from all over the world.
@@ -30,12 +34,14 @@ Web version can be found on [Heroku](https://newsonthemews.herokuapp.com/)
 Clone the repository and run on your machine. 
 
 Install the packages listed in the package.json file by running the following terminal command:
+```
 $ npm i
-
+```
 Run the app on your localhost 8000 with the following command:
+```
 $ npm run serve
-
-In order tpo get the content you will need to obtain the API key from [NewsAPI](https://newsapi.org/). Once obtained, create .env file in the project level and paste in your key in the following text 
+```
+In order tpo get the content you will need to obtain the API key from [NewsAPI](https://newsapi.org/). Once obtained, create .env file in the project root directory and paste in your key in the following text 
 ```
 WEBAPI_ACCESS_TOKEN = 'your_API_key_here'
 
@@ -91,6 +97,11 @@ This the first pair-programming and first React project for me and my colleague.
 * Make the page more mobile-responsive.
 * Store users last country and news type selection in localStorage so that more user-relevant content could be generated on the page load.
 * Translate page navigational content to relevant language after user changes to sources from different country in the Country selector.
+
+---
+Update: Click [here](https://github.com/GRudinsky/sei-project-2) for refactored version of the same app with separate UI components and React Hooks.
+---
+
 
 
 
