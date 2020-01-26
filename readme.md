@@ -2,7 +2,7 @@
 # SEI Project 2: News On The Mews
 
 
-Update: Click [here](https://github.com/GRudinsky/sei-project-2) for refactored version of the same app with separate UI components and React Hooks.
+Update: Click [here](https://github.com/GRudinsky/news-on-mews-react-hooks) for refactored version of the same app with separate UI components and React Hooks.
 ---
 
 ## Overview 
@@ -99,7 +99,7 @@ This the first pair-programming and first React project for me and my colleague.
 * Translate page navigational content to relevant language after user changes to sources from different country in the Country selector.
 
 ---
-Update: Click [here](https://github.com/GRudinsky/sei-project-2) for refactored version of the same app with separate UI components and React Hooks.
+Update: Click [here](https://github.com/GRudinsky/news-on-mews-react-hooks) for refactored version of the same app with separate UI components and React Hooks.
 ---
 
 
